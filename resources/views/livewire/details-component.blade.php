@@ -437,7 +437,7 @@
                                                     <div class="product-img-action-wrap">
                                                         <div class="product-img product-img-zoom">
                                                             <a href="{{route('product.details',['slug'=>$rproduct->slug])}}" tabindex="0">
-                                                                <img class="default-img" src="{{ asset('assets/imgs/shop/product-2-1.jpg') }}" alt="">
+                                                                <img class="default-img" src="{{ asset('assets/imgs/shop/product-') }}{{$rproduct->id}}-1.jpg" alt="{{$rproduct->name}}">
                                                                 <img class="hover-img" src="{{ asset('assets/imgs/shop/product-2-2.jpg') }}" alt="">
                                                             </a>
                                                         </div>
@@ -556,18 +556,20 @@
                                     </div>
                                 </div>
                             </div>
+                            @foreach ($nproducts as $nproduct)
                             <div class="single-post clearfix">
                                 <div class="image">
-                                    <img src="{{asset('assets/imgs/shop/thumbnail-5.jpg')}}" alt="#">
+                                    <img class="default-img" src="{{ asset('assets/imgs/shop/product-') }}{{$nproduct->id}}-1.jpg" alt="{{$nproduct->name}}">
                                 </div>
                                 <div class="content pt-10">
-                                    <h6><a href="product-details.html">Colorful Jacket</a></h6>
-                                    <p class="price mb-0 mt-5">$25</p>
+                                    <h6><a href="{{route('product.details',['slug'=>$nproduct->slug])}}">{{$nproduct->name}}</a></h6>
+                                    <p class="price mb-0 mt-5">${{$nproduct->reqular_price}}</p>
                                     <div class="product-rate">
                                         <div class="product-rating" style="width:60%"></div>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
