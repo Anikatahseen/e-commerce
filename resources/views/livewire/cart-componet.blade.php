@@ -15,9 +15,9 @@
                     <div class="col-12">
                         <div class="table-responsive">
                             @if (Session::has('successful_message'))
-                                        <div class="alert alert-success">
-                                            <strong>Success | {{Session::get('successful_message')}}</strong>
-                                        </div>
+                                <div class="alert alert-success">
+                                    <strong>Success | {{Session::get('successful_message')}}</strong>
+                                </div>
                             @endif
                             @if(Cart::count() > 0)
                             <table class="table shopping-summery text-center clean">

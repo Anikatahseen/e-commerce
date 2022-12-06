@@ -10,6 +10,7 @@ use Cart;
 class ShopComponet extends Component
 {
     use WithPagination;
+    public $pageSize = 12;
 
     public function store($product_id,$product_name,$product_price)
     {
@@ -19,7 +20,7 @@ class ShopComponet extends Component
     }
     public function render()
     {
-        $products = Product::paginate(12);
+        $products = Product::paginate($this->pageSize);
         return view('livewire.shop-componet',['products'=>$products]);
     }
 }
