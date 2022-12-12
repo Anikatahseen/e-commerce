@@ -32,15 +32,15 @@
                                             <span><i class="fi-rs-apps"></i>Show:</span>
                                         </div>
                                         <div class="sort-by-dropdown-wrap">
-                                            <span> 50 <i class="fi-rs-angle-small-down"></i></span>
+                                            <span> {{$pageSize}} <i class="fi-rs-angle-small-down"></i></span>
                                         </div>
                                     </div>
                                     <div class="sort-by-dropdown">
                                         <ul>
-                                            <li><a class="active" href="#">12</a></li>
-                                            <li><a href="#">15</a></li>
-                                            <li><a href="#">25</a></li>
-                                            <li><a href="#">32</a></li>
+                                            <li><a class="{{ $pageSize ==12 ? 'active':''}}" href="#" wire:click.prevent="changePageSize(12)">12</a></li>
+                                            <li><a href="#" wire:click.prevent="changePageSize(15)">15</a></li>
+                                            <li><a href="#" wire:click.prevent="changePageSize(25)">25</a></li>
+                                            <li><a href="#"wire:click.prevent="changePageSize(32)" >32</a></li>
                                         </ul>
                                     </div>
                                 </div>
