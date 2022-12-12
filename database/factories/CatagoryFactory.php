@@ -17,7 +17,7 @@ class CatagoryFactory extends Factory
      */
     public function definition()
     {
-        $catagory_name = $this->faker->unique()->words($nd=2, $asText = true);
+        $catagory_name = $this->faker->unique()->words($nd=3, $asText = true);
         $slug = Str::slug($catagory_name, '-');
         return [
             'name' =>$catagory_name,
