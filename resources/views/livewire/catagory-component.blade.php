@@ -131,8 +131,8 @@
                             <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
                             <ul class="categories">
                                 @foreach ($categories as $category)
-                                    <li><a href="{{route('product.category',['slug'=>$category->slug])}}">{{$category->name}}</a></li>
-                                @endforeach
+                                <li><a href="{{route('product.category',['slug'=>$category->slug])}}">{{$category->name}}</a></li>
+                            @endforeach
                             </ul>
                         </div>
                         <!-- Fillter By Price -->
@@ -236,3 +236,4 @@
         </section>
     </main>
 </div>
+
