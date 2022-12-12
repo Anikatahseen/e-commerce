@@ -18,6 +18,12 @@ class ShopComponet extends Component
         session()->flash('successful_message','Item add in Cart');
         return redirect()->route('shop.cart');
     }
+
+    public function changePageSize($size)
+    {
+        $this->pageSize = $size;
+    }
+
     public function render()
     {
         $products = Product::paginate($this->pageSize);
