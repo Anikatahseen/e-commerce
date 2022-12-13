@@ -19,6 +19,7 @@ class SearchComponent extends Component
     public function mount()
     {
         $this->fill(request()->only('q'));
+        $this->search_term = '%' . $this->q . '%';
     }
 
     public function store($product_id,$product_name,$product_price)
@@ -43,18 +44,18 @@ class SearchComponent extends Component
 
         if($this->orderBy == 'Price: Low to High')
         {
-            $products = Product::OrderBy('reqular_price','ASC')->paginate($this->pageSize);
+            $products = Product::where('name','like',$this->search_term)->orderBy('reqular_price','ASC')->paginate($this->pageSize);
         }
         elseif($this->orderBy == 'Price: High to Low')
         {
-            $products = Product::OrderBy('reqular_price','DESC')->paginate($this->pageSize);
+            $products = Product::where('name','like',$this->search_term)->orderBy('reqular_price','DESC')->paginate($this->pageSize);
         }
         elseif($this->orderBy == 'Sort by Newness')
         {
-            $products = Product::OrderBy('created_at','DESC')->paginate($this->pageSize);
+            $products = Product::where('name','like',$this->search_term)->orderBy('created_at','DESC')->paginate($this->pageSize);
         }
         else{
-            $products = Product::paginate($this->pageSize);
+            $products = Product::where('name','like',$this->search_term)->paginate($this->pageSize);
         }
 
         $categories = Catagory::orderBy('name','ASC')->get();
