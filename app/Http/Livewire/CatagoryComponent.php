@@ -40,26 +40,26 @@ class CatagoryComponent extends Component
     public function render()
     {
         $category = Catagory::where('slug',$this->slug)->first();
-        $category_id = $category->id;
-        $category_name = $category->name;
+        $catagory_id = $category->id;
+        $catagory_name = $category->name;
 
         if($this->orderBy == 'Price: Low to High')
         {
-            $products = Product::where('category_id',$category_id )->orderBy('reqular_price','ASC')->paginate($this->pageSize);
+            $products = Product::where('catagory_id',$catagory_id )->orderBy('reqular_price','ASC')->paginate($this->pageSize);
         }
         elseif($this->orderBy == 'Price: High to Low')
         {
-            $products = Product::where('category_id',$category_id )->orderBy('reqular_price','DESC')->paginate($this->pageSize);
+            $products = Product::where('catagory_id',$catagory_id )->orderBy('reqular_price','DESC')->paginate($this->pageSize);
         }
         elseif($this->orderBy == 'Sort by Newness')
         {
-            $products = Product::where('category_id',$category_id )->orderBy('created_at','DESC')->paginate($this->pageSize);
+            $products = Product::where('catagory_id',$catagory_id )->orderBy('created_at','DESC')->paginate($this->pageSize);
         }
         else{
-            $products = Product::where('category_id',$category_id )->paginate($this->pageSize);
+            $products = Product::where('catagory_id',$catagory_id )->paginate($this->pageSize);
         }
 
         $categories = Catagory::orderBy('name','ASC')->get();
-        return view('livewire.catagory-component',['products'=>$products,'categories'=>$categories,'category_name'=>$category_name]);
+        return view('livewire.catagory-component',['products'=>$products,'categories'=>$categories,'catagory_name'=>$catagory_name]);
     }
 }
