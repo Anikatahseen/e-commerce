@@ -112,7 +112,7 @@
                                             </div>
                                             <div class="product-action-1 show">
                                                 @if ($witem->contains($product->id))
-                                                    <a aria-label="Add To Wishlist" class="action-btn hover-up wishlisted" href="wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                    <a aria-label="Add To Wishlist" class="action-btn hover-up wishlisted" href="#"><i class="fi-rs-heart"></i></a>
                                                 @else
                                                     <a aria-label="Add To Wishlist" class="action-btn hover-up" href="#" wire:click.prevent="addToWishlist({{$product->id}},'{{$product->name}}',{{$product->reqular_price}})"><i class="fi-rs-heart"></i></a>
                                                 @endif

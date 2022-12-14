@@ -77,7 +77,7 @@
                         @livewire('header-search-component')
                         <div class="header-action-right">
                             <div class="header-action-2">
-                                @livewire('wish-list-icon-component')
+                                @livewire('wishlist-icon-component')
                                 @livewire('cart-icon-component')
                             </div>
                         </div>

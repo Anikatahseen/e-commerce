@@ -21,6 +21,7 @@ class ShopComponet extends Component
     {
         Cart::instance('cart')->add($product_id,$product_name,1,$product_price)->associate('\App\Models\Product');
         session()->flash('successful_message','Item add in Cart');
+        $this->emitTo('cart-icon-component','refreshComponent');
         return redirect()->route('shop.cart');
     }
 
@@ -37,7 +38,7 @@ class ShopComponet extends Component
     public function addToWishlist($product_id,$product_name,$product_price)
     {
         Cart::instance('wishlist')->add($product_id,$product_name,1,$product_price)->associate('\App\Models\Product');
-        $this->emitTo('wish-list-icon-component','refreshComponent');
+        $this->emitTo('wishlist-icon-component','refreshComponent');
     }
 
     public function render()

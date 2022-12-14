@@ -4,11 +4,11 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class WishListIconComponent extends Component
+class WishlistIconComponent extends Component
 {
     protected $listeners = ['refreshComponent' => '$refresh'];
     public function render()
     {
-        return view('livewire.wish-list-icon-component');
+        return view('livewire.wishlist-icon-component');
     }
 }
