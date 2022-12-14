@@ -65,6 +65,9 @@
                             </div>
                         </div>
                         <div class="row product-grid-3">
+                            @php
+                                $witem = Cart::instance('wishlist')->content()->pluck('id');
+                            @endphp
                             @foreach ($products as $product)
                                 <div class="col-lg-4 col-md-4 col-6 col-sm-6">
                                     <div class="product-cart-wrap mb-30">
@@ -100,6 +103,7 @@
                                                 {{-- <span class="old-price">$245.8</span> --}}
                                             </div>
                                             <div class="product-action-1 show">
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
                                                 <a aria-label="Add To Cart" class="action-btn hover-up" href="#" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->reqular_price}})"><i class="fi-rs-shopping-bag-add"></i></a>
                                             </div>
                                         </div>
@@ -146,7 +150,7 @@
                                     <div id="slider-range" wire:ignore></div>
                                     <div class="price_slider_amount">
                                         <div class="label-input">
-                                            <span>Range:</span><span class="text-info">${{$min_value}}</span> - <span class="text-info">${{$max_value}}</span>
+                                            <span>Range:</span> <span class="text-info">${{$min_value}}</span> - <span class="text-info">${{$max_value}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -239,20 +243,20 @@
 
 @push('scripts')
     <script>
-        var sliderrange = $('#slider-range');
-        var amountprice = $('#amount');
-        $(function() {
-            sliderrange.slider({
-                range: true,
-                min: 0,
-                max: 1000,
-                values: [0,1000],
-                slide: function(event,ui)
-                {
-                    @this.set('min_value',ui.values[0]);
-                    @this.set('max_value',ui.values[1]);
-                }
-            });
+    var sliderrange = $('#slider-range');
+    var amountprice = $('#amount');
+    $(function() {
+        sliderrange.slider({
+            range: true,
+            min: 0,
+            max: 1000,
+            values: [0, 1000],
+            slide: function(event, ui) {
+                @this.set('min_value',ui.values[0]);
+                @this.set('max_value',ui.values[1]);
+                // amountprice.val("$" + ui.values[0] + " - $" + ui.values[1]);
+            }
         });
+    });
     </script>
 @endpush
